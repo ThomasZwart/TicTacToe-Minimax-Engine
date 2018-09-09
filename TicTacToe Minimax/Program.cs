@@ -59,9 +59,9 @@ namespace TicTacToe_Minimax
                     Console.WriteLine("Invalid Input, try Again");
                     continue;
                 }
-
+                board = ComputerTurn(board);
                 // If board is full, determine winner, else computer playes a move
-                if (board.BoardFull()) {
+                if (board.BoardFull() || board.GameWonBy() != 0) {
                     if (board.GameWonBy() == 1) {
                         Console.WriteLine("X won!");
                         break;
@@ -74,10 +74,7 @@ namespace TicTacToe_Minimax
                         Console.WriteLine("Draw!");
                         break;
                     }
-                }
-                else {
-                    board = ComputerTurn(board);
-                }                       
+                }                    
             }
             Console.ReadLine();
         }
@@ -104,7 +101,7 @@ namespace TicTacToe_Minimax
                     }
                 }
             }
-            return null; 
+            return board; 
         }
 
         // Readboard of the form 
